@@ -1,0 +1,6 @@
+{
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune": "时运",
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune.desc": "增加会受时运影响的方块的掉落物数量",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting": "抢夺",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting.desc": "增加击杀生物的掉落物品的质量和数量"
+}

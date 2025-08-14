@@ -1,0 +1,6 @@
+{
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune": "Fortune",
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune.desc": "Increase the number of block drops that will be affected by fortune",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting": "Looting",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting.desc": "Increase the quality and quantity of dropped items for killing creatures"
+}

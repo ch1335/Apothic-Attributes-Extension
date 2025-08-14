@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:generic.attack_damage",
+    "minecraft:generic.attack_speed",
+    "minecraft:generic.max_health",
+    "minecraft:generic.armor",
+    "minecraft:generic.armor_toughness",
+    "minecraft:generic.movement_speed"
+  ]
+}

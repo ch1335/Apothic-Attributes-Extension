@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.chen1335.apothicAttributesExtension.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ApplyBonusCountMixin",
+    "AttributesGuiMixin",
+    "BonusLevelTableConditionMixin",
+    "EnchantedCountIncreaseFunctionMixin",
+    "LootItemRandomChanceWithEnchantedBonusConditionMixin"
+  ],
+  "client": [
+    "InventoryScreenMixin"
+  ],
+  "minVersion": "0.8"
+}
