@@ -1,4 +1,4 @@
-package com.chen1335.apothicAttributesExtension.mixins;
+package com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extension;
 
 import com.chen1335.apothicAttributesExtension.API.objects.ModAttributes;
 import com.chen1335.apothicAttributesExtension.utils.Util;
@@ -11,15 +11,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(LootItemRandomChanceWithEnchantedBonusCondition.class)
-public class LootItemRandomChanceWithEnchantedBonusConditionMixin {
-    @WrapOperation(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/entity/LivingEntity;)I"))
-    private int test(Holder<Enchantment> holder, LivingEntity livingEntity, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
+@Mixin(EnchantedCountIncreaseFunction.class)
+public class EnchantedCountIncreaseFunctionMixin {
+
+    @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/entity/LivingEntity;)I"))
+    private int run(Holder<Enchantment> holder, LivingEntity livingEntity, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
         int lootingLevel = original.call(holder, livingEntity);
         if (holder.is(Enchantments.LOOTING)) {
             Entity attacker = context.getParamOrNull(LootContextParams.ATTACKING_ENTITY);

@@ -1,4 +1,4 @@
-package com.chen1335.apothicAttributesExtension.mixins;
+package com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extension;
 
 import com.chen1335.apothicAttributesExtension.API.AttributeTags;
 import com.chen1335.apothicAttributesExtension.mixinHooks.AttributesGuiHooks;
@@ -78,7 +78,7 @@ public abstract class AttributesGuiMixin {
 
     @Inject(method = "render", at = @At("RETURN"))
     private void render(GuiGraphics gfx, int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-        AttributesGuiHooks.render((AttributesGui) (Object) this, gfx, mouseX, mouseY, partialTicks);
+        AttributesGuiHooks.render((AttributesGui) (Object) this, gfx, mouseX, mouseY, partialTicks, open);
     }
 
     @Inject(method = "mouseClicked", at = @At("RETURN"))

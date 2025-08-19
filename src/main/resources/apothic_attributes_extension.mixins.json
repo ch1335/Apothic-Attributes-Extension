@@ -2,15 +2,20 @@
   "required": true,
   "package": "com.chen1335.apothicAttributesExtension.mixins",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extension.MainMixinPlugin",
   "mixins": [
-    "ApplyBonusCountMixin",
-    "AttributesGuiMixin",
-    "BonusLevelTableConditionMixin",
-    "EnchantedCountIncreaseFunctionMixin",
-    "LootItemRandomChanceWithEnchantedBonusConditionMixin"
+    "apothic_attributes_extension.ApplyBonusCountMixin",
+    "apothic_attributes_extension.AttributesGuiMixin",
+    "apothic_attributes_extension.BonusLevelTableConditionMixin",
+    "apothic_attributes_extension.EnchantedCountIncreaseFunctionMixin",
+    "apothic_attributes_extension.EnchantmentHelperMixin",
+    "apothic_attributes_extension.FishingHookMixins",
+    "apothic_attributes_extension.LootItemRandomChanceWithEnchantedBonusConditionMixin",
+    "apothic_attributes_extension.RegistryDataLoaderMixin",
+    "netherdepthsupgrade.LavaFishingBobberEntityMixin"
   ],
   "client": [
-    "InventoryScreenMixin"
+    "apothic_attributes_extension.InventoryScreenMixin"
   ],
   "minVersion": "0.8"
 }

@@ -2,5 +2,9 @@
   "apothic_attributes_extension.attribute.name.generic.mining_fortune": "Fortune",
   "apothic_attributes_extension.attribute.name.generic.mining_fortune.desc": "Increase the number of block drops that will be affected by fortune",
   "apothic_attributes_extension.attribute.name.generic.mob_looting": "Looting",
-  "apothic_attributes_extension.attribute.name.generic.mob_looting.desc": "Increase the quality and quantity of dropped items for killing creatures"
+  "apothic_attributes_extension.attribute.name.generic.mob_looting.desc": "Increase the quality and quantity of dropped items for killing creatures",
+  "apothic_attributes_extension.attribute.name.generic.fishing_speed": "Fishing Speed",
+  "apothic_attributes_extension.attribute.name.generic.fishing_speed.desc": "Increase your fishing speed",
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck": "Fishing Luck",
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "Increases your chances of catching treasure"
 }

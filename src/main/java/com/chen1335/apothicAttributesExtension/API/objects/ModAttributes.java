@@ -15,6 +15,10 @@ public class ModAttributes {
 
     public static final DeferredHolder<Attribute, Attribute> MOB_LOOTING = ATTRIBUTE_DEFERRED_REGISTER.register("mob_looting", () -> new RangedAttribute(makeDescriptionId("mob_looting"), 0, 0, 114514).setSyncable(true));
 
+    public static final DeferredHolder<Attribute, Attribute> FISHING_SPEED = ATTRIBUTE_DEFERRED_REGISTER.register("fishing_speed", () -> new RangedAttribute(makeDescriptionId("fishing_speed"), 0, 0, 114514).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> FISHING_LUCK = ATTRIBUTE_DEFERRED_REGISTER.register("fishing_luck", () -> new RangedAttribute(makeDescriptionId("fishing_luck"), 0, 0, 114514).setSyncable(true));
+
     private static String makeDescriptionId(String s) {
         return ApothicAttributesExtension.MODID + ".attribute.name.generic." + s;
     }

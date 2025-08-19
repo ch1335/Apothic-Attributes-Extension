@@ -26,8 +26,8 @@ public class AttributesGuiHooks {
         }
     }
 
-    public static void render(AttributesGui attributesGui, GuiGraphics gfx, int mouseX, int mouseY, float partialTicks) {
-        if (nameBox != null) {
+    public static void render(AttributesGui attributesGui, GuiGraphics gfx, int mouseX, int mouseY, float partialTicks, boolean open) {
+        if (nameBox != null && open) {
             nameBox.render(gfx, mouseX, mouseY, partialTicks);
         }
     }
@@ -44,7 +44,7 @@ public class AttributesGuiHooks {
     }
 
     public static void keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (nameBox != null && ATTRIBUTES_GUI != null) {
+        if (nameBox != null && nameBox.visible && ATTRIBUTES_GUI != null) {
             nameBox.keyPressed(keyCode, scanCode, modifiers);
             if (nameBox.isActive() && nameBox.isFocused()) {
                 ATTRIBUTES_GUI.refreshData();
