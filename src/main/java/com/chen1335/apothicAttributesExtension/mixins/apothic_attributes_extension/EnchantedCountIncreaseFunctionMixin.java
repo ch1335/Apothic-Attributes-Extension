@@ -16,18 +16,17 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(EnchantedCountIncreaseFunction.class)
+@Mixin(value = EnchantedCountIncreaseFunction.class, priority = 1)
 public class EnchantedCountIncreaseFunctionMixin {
 
     @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/entity/LivingEntity;)I"))
     private int run(Holder<Enchantment> holder, LivingEntity livingEntity, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
-        int lootingLevel = original.call(holder, livingEntity);
         if (holder.is(Enchantments.LOOTING)) {
             Entity attacker = context.getParamOrNull(LootContextParams.ATTACKING_ENTITY);
             if (attacker instanceof LivingEntity living) {
-                lootingLevel = lootingLevel + Util.toInt(living.getAttributeValue(ModAttributes.MOB_LOOTING), living.getRandom());
+                return Util.toInt(living.getAttributeValue(ModAttributes.MOB_LOOTING), living.getRandom());
             }
         }
-        return lootingLevel;
+        return original.call(holder, livingEntity);
     }
 }

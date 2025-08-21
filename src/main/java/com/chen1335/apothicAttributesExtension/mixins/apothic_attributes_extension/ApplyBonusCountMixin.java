@@ -2,6 +2,8 @@ package com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extens
 
 import com.chen1335.apothicAttributesExtension.API.objects.ModAttributes;
 import com.chen1335.apothicAttributesExtension.utils.Util;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,7 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(ApplyBonusCount.class)
+@Mixin(value = ApplyBonusCount.class, priority = 1)
 public class ApplyBonusCountMixin {
     @Shadow
     @Final
@@ -39,5 +41,14 @@ public class ApplyBonusCountMixin {
             }
         }
         return enchantmentLevel;
+    }
+
+    @WrapOperation(method = "run", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I"))
+    private int getItemEnchantmentLevel(Holder<Enchantment> enchantment, ItemStack stack, Operation<Integer> original) {
+        if (enchantment.is(Enchantments.FORTUNE)) {
+            return 0;
+        } else {
+            return original.call(enchantment, stack);
+        }
     }
 }

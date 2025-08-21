@@ -6,5 +6,8 @@
   "apothic_attributes_extension.attribute.name.generic.fishing_speed": "Fishing Speed",
   "apothic_attributes_extension.attribute.name.generic.fishing_speed.desc": "Increase your fishing speed",
   "apothic_attributes_extension.attribute.name.generic.fishing_luck": "Fishing Luck",
-  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "Increases your chances of catching treasure"
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "Increases your chances of catching treasure",
+  "apothic_attributes_extension.config": "Apothic Attributes Extension Config",
+  "apothic_attributes_extension.config.server": "Server Config",
+  "apothic_attributes_extension.fishing_speed_per_lure": "Fishing speed per lure"
 }

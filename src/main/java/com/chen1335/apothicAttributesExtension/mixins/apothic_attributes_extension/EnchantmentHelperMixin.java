@@ -10,12 +10,12 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(EnchantmentHelper.class)
+@Mixin(value = EnchantmentHelper.class, priority = 1)
 public class EnchantmentHelperMixin {
     @ModifyReturnValue(method = "getFishingTimeReduction", at = @At("RETURN"))
     private static float getFishingTimeReduction(float original, @Local(argsOnly = true) Entity entity) {
         if (entity instanceof LivingEntity living) {
-            original = (float) (original + living.getAttributeValue(ModAttributes.FISHING_SPEED) / 10);
+            return (float) (original + living.getAttributeValue(ModAttributes.FISHING_SPEED) / 10);
         }
         return original;
     }
@@ -23,7 +23,7 @@ public class EnchantmentHelperMixin {
     @ModifyReturnValue(method = "getFishingLuckBonus", at = @At("RETURN"))
     private static int getFishingLuckBonus(int original, @Local(argsOnly = true) Entity entity) {
         if (entity instanceof LivingEntity living) {
-            original = original + Util.toInt(living.getAttributeValue(ModAttributes.FISHING_LUCK), entity.getRandom());
+            return Util.toInt(living.getAttributeValue(ModAttributes.FISHING_LUCK), entity.getRandom());
         }
         return original;
     }

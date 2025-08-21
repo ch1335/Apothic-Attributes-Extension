@@ -129,6 +129,10 @@ dependencies {
     implementation "curse.maven:nether-depths-upgrade-670011:6430271"
     implementation "curse.maven:geckolib-388172:6659026"
     implementation "curse.maven:curios-309927:6529130"
+    implementation "curse.maven:irons-spells-n-spellbooks-855414:6834357"
+    implementation "curse.maven:playeranimator-658587:6024462"
+    implementation "curse.maven:cloth-config-348521:5729127"
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

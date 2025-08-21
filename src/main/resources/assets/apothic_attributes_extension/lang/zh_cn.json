@@ -6,5 +6,8 @@
   "apothic_attributes_extension.attribute.name.generic.fishing_speed": "钓鱼速度",
   "apothic_attributes_extension.attribute.name.generic.fishing_speed.desc": "增加你的钓鱼速度",
   "apothic_attributes_extension.attribute.name.generic.fishing_luck": "钓鱼幸运",
-  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "增加你钓到宝藏的概率"
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "增加你钓到宝藏的概率",
+  "apothic_attributes_extension.config": "神化属性拓展配置",
+  "apothic_attributes_extension.config.server": "服务端配置",
+  "apothic_attributes_extension.fishing_speed_per_lure": "每级饵钓提供的钓鱼速度"
 }
