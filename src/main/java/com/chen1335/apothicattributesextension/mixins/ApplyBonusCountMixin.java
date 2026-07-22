@@ -23,15 +23,16 @@ public class ApplyBonusCountMixin {
     private Holder<Enchantment> enchantment;
 
     @ModifyExpressionValue(
-        method = "run",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/neoforged/neoforge/event/EventHooks;getBlockLootEnchantmentLevel(Lnet/minecraft/world/item/ItemInstance;Lnet/minecraft/core/Holder;ILnet/minecraft/world/level/storage/loot/LootContext;)I"
-        )
+            method = "run",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/neoforged/neoforge/event/EventHooks;getBlockLootEnchantmentLevel(Lnet/minecraft/world/item/ItemInstance;Lnet/minecraft/core/Holder;ILnet/minecraft/world/level/storage/loot/LootContext;)I"
+            )
     )
     private int addMiningFortune(int original, @Local(argsOnly = true, name = "context") LootContext context) {
         if (this.enchantment.is(Enchantments.FORTUNE)
-            && context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity) {
+                && context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity
+                && entity.getAttributes().hasAttribute(ModAttributes.MINING_FORTUNE)) {
             return original + Util.toInt(entity.getAttributeValue(ModAttributes.MINING_FORTUNE), entity.getRandom());
         }
         return original;

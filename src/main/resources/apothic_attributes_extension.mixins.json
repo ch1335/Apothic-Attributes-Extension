@@ -3,12 +3,7 @@
   "minVersion": "0.8",
   "package": "com.chen1335.apothicattributesextension.mixins",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [
-    "EnchantmentHelperMixin",
-    "FishingHookMixin",
-    "ApplyBonusCountMixin",
-    "BonusLevelTableConditionMixin"
-  ],
+  "mixins": ["ApplyBonusCountMixin", "BonusLevelTableConditionMixin", "EnchantmentHelperMixin", "FishingHookMixin"],
   "client": [
     "AttributesGuiMixin"
   ],

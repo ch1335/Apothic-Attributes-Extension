@@ -11,8 +11,8 @@ public final class ModAttributes {
 
     public static final DeferredHolder<Attribute, Attribute> MINING_FORTUNE = register("mining_fortune",100);
     public static final DeferredHolder<Attribute, Attribute> MOB_LOOTING = register("mob_looting",100);
-    public static final DeferredHolder<Attribute, Attribute> FISHING_SPEED = register("fishing_speed",350);
-    public static final DeferredHolder<Attribute, Attribute> FISHING_LUCK = register("fishing_luck",100);
+    public static final DeferredHolder<Attribute, Attribute> FISHING_SPEED = register("fishing_speed",300);
+    public static final DeferredHolder<Attribute, Attribute> FISHING_LUCK = register("fishing_luck",84);
 
     private ModAttributes() {
     }

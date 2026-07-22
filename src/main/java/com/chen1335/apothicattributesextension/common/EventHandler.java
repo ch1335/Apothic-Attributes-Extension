@@ -1,5 +1,8 @@
-package com.chen1335.apothicattributesextension;
+package com.chen1335.apothicattributesextension.common;
 
+import com.chen1335.apothicattributesextension.ApothicAttributesExtension;
+import com.chen1335.apothicattributesextension.ModAttributes;
+import com.chen1335.apothicattributesextension.Util;
 import com.chen1335.apothicattributesextension.config.ServerConfig;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -12,6 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.enchanting.EnchantedBlockLootEvent;
 import net.neoforged.neoforge.event.enchanting.EnchantedEntityLootEvent;
 
 @EventBusSubscriber(modid = ApothicAttributesExtension.MODID)
@@ -36,8 +40,6 @@ public final class EventHandler {
         }
 
         addEnchantmentModifier(event, enchantments, Enchantments.LUCK_OF_THE_SEA, ModAttributes.FISHING_LUCK, "enchantment_luck_of_the_sea");
-        addEnchantmentModifier(event, enchantments, Enchantments.FORTUNE, ModAttributes.MINING_FORTUNE, "enchantment_fortune");
-        addEnchantmentModifier(event, enchantments, Enchantments.LOOTING, ModAttributes.MOB_LOOTING, "enchantment_looting");
     }
 
     @SubscribeEvent
@@ -51,6 +53,7 @@ public final class EventHandler {
             event.setEnchantmentLevel(event.getEnchantmentLevel() + bonus);
         }
     }
+
 
     private static void addEnchantmentModifier(
         ItemAttributeModifierEvent event,
