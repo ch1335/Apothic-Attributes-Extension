@@ -21,7 +21,7 @@ hs_err_pid*
 run
 
 # Local Claude Code configuration
-.claude/settings.local.json
+/.claude/
 
 # Persisted decompiled dependency sources
 /jars/
