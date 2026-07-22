@@ -20,8 +20,5 @@ hs_err_pid*
 # Common working directory
 run
 
-# Local Claude Code configuration
-/.claude/
-
 # Persisted decompiled dependency sources
 /jars/
