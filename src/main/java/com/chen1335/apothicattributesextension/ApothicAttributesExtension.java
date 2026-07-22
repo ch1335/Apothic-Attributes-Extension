@@ -1,10 +1,14 @@
 package com.chen1335.apothicattributesextension;
 
+import com.chen1335.apothicattributesextension.config.ClothConfig;
+import com.chen1335.apothicattributesextension.config.ServerConfig;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 @Mod(com.chen1335.apothicattributesextension.ApothicAttributesExtension.MODID)
 public class ApothicAttributesExtension {
@@ -13,6 +17,12 @@ public class ApothicAttributesExtension {
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
         ModAttributes.ATTRIBUTES.register(modEventBus);
         modEventBus.addListener(ApothicAttributesExtension::addEntityAttributes);
+
+        if (ModList.get().isLoaded("cloth_config")) {
+            if (FMLEnvironment.getDist().isClient()) {
+                ClothConfig.build(modContainer);
+            }
+        }
     }
 
     private static void addEntityAttributes(net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent event) {

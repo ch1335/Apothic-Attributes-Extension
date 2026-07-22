@@ -1,5 +1,6 @@
 package com.chen1335.apothicattributesextension;
 
+import com.chen1335.apothicattributesextension.config.ServerConfig;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EquipmentSlotGroup;
