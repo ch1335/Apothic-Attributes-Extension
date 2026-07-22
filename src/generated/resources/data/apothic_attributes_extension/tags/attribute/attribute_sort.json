@@ -1,0 +1,22 @@
+{
+  "values": [
+    "minecraft:attack_damage",
+    "minecraft:attack_speed",
+    "minecraft:max_health",
+    "minecraft:armor",
+    "minecraft:armor_toughness",
+    "minecraft:movement_speed",
+    "apothic_attributes_extension:mob_looting",
+    "apothic_attributes_extension:mining_fortune",
+    "apothic_attributes_extension:fishing_speed",
+    "apothic_attributes_extension:fishing_luck",
+    {
+      "id": "irons_spellbooks:max_mana",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:spell_power",
+      "required": false
+    }
+  ]
+}

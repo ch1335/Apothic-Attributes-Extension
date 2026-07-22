@@ -1,0 +1,14 @@
+{
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune": "时运",
+  "apothic_attributes_extension.attribute.name.generic.mining_fortune.desc": "增加受时运影响的方块掉落数量",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting": "抢夺",
+  "apothic_attributes_extension.attribute.name.generic.mob_looting.desc": "增加击杀生物时掉落物的质量与数量",
+  "apothic_attributes_extension.attribute.name.generic.fishing_speed": "钓鱼速度",
+  "apothic_attributes_extension.attribute.name.generic.fishing_speed.desc": "增加钓鱼速度",
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck": "钓鱼幸运",
+  "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "增加钓到宝藏的概率",
+  "apothic_attributes_extension.config": "神化属性扩展配置",
+  "apothic_attributes_extension.config.server": "服务端配置",
+  "apothic_attributes_extension.fishing_speed_per_lure": "每级饵钓提供的钓鱼速度",
+  "apothic_attributes_extension.gui.attribute_search": "搜索属性"
+}
