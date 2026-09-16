@@ -4,6 +4,7 @@ import com.chen1335.apothicAttributesExtension.API.objects.ModAttributes;
 import com.chen1335.apothicAttributesExtension.utils.Util;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,23 +26,14 @@ public class BonusLevelTableConditionMixin {
     @Final
     private Holder<Enchantment> enchantment;
 
-    @ModifyVariable(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I", ordinal = 0), index = 3)
-    private int test(int enchantmentLevel, LootContext context) {
+    @WrapOperation(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I", ordinal = 0))
+    private int test(Holder<Enchantment> enchantment, ItemStack stack, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
         if (enchantment.is(Enchantments.FORTUNE)) {
             Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
             if (entity instanceof LivingEntity living) {
-                enchantmentLevel = enchantmentLevel + Util.toInt(living.getAttributeValue(ModAttributes.MINING_FORTUNE), living.getRandom());
+                return original.call(enchantment,stack) + Util.toInt(living.getAttributeValue(ModAttributes.MINING_FORTUNE), living.getRandom());
             }
         }
-        return enchantmentLevel;
-    }
-
-    @WrapOperation(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getItemEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I"))
-    private int getItemEnchantmentLevel(Holder<Enchantment> enchantment, ItemStack stack, Operation<Integer> original) {
-        if (enchantment.is(Enchantments.FORTUNE)) {
-            return 0;
-        } else {
-            return original.call(enchantment, stack);
-        }
+        return original.call(enchantment,stack);
     }
 }

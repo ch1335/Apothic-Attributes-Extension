@@ -43,16 +43,6 @@ public class EventHandler {
             if (luckOfTheSeaLevel > 0) {
                 event.addModifier(ModAttributes.FISHING_LUCK, new AttributeModifier(ApothicAttributesExtension.id("enchantment_luck_of_the_sea"), luckOfTheSeaLevel, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
             }
-
-            int fortuneLevel = event.getItemStack().getEnchantmentLevel(registryLookup.getOrThrow(Enchantments.FORTUNE));
-            if (fortuneLevel > 0) {
-                event.addModifier(ModAttributes.MINING_FORTUNE, new AttributeModifier(ApothicAttributesExtension.id("enchantment_fortune"), fortuneLevel, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
-            }
-
-            int lootingLevel = event.getItemStack().getEnchantmentLevel(registryLookup.getOrThrow(Enchantments.LOOTING));
-            if (lootingLevel > 0) {
-                event.addModifier(ModAttributes.MOB_LOOTING, new AttributeModifier(ApothicAttributesExtension.id("enchantment_looting"), lootingLevel, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
-            }
         }
     }
 }

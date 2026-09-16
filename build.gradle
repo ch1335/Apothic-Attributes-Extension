@@ -16,8 +16,20 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
+repositories.clear()
 repositories {
-    mavenLocal()
+    maven {
+
+        url = "https://libraries.minecraft.net/"
+    }
+
+    maven {
+        url = "https://neoforged.forgecdn.net/releases"
+    }
+
+    maven {
+        url = "https://neoforged.forgecdn.net/mojang-meta"
+    }
 }
 
 base {
@@ -47,6 +59,7 @@ neoForge {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+
         }
 
         server {
@@ -124,7 +137,7 @@ java {
 }
 
 dependencies {
-    implementation "curse.maven:apothic-attributes-898963:6751650"
+    implementation "curse.maven:apothic-attributes-898963:7445079"
     implementation "curse.maven:placebo-283644:6751290"
     implementation "curse.maven:nether-depths-upgrade-670011:6430271"
     implementation "curse.maven:geckolib-388172:6659026"
@@ -133,6 +146,8 @@ dependencies {
     implementation "curse.maven:playeranimator-658587:6024462"
     implementation "curse.maven:cloth-config-348521:5729127"
 
+    implementation "curse.maven:applied-energistics-2-223794:7027323"
+    implementation "curse.maven:guideme-1173950:8420861"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

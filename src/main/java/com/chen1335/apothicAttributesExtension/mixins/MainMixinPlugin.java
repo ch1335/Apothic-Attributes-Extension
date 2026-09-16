@@ -1,4 +1,4 @@
-package com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extension;
+package com.chen1335.apothicAttributesExtension.mixins;
 
 import com.mojang.logging.LogUtils;
 import net.neoforged.fml.loading.FMLLoader;

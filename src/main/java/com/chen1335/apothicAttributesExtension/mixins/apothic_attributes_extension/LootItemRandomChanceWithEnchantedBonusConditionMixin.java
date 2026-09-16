@@ -13,19 +13,26 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithEnchantedBonusCondition;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(value = LootItemRandomChanceWithEnchantedBonusCondition.class, priority = 1)
 public class LootItemRandomChanceWithEnchantedBonusConditionMixin {
+    @Shadow
+    @Final
+    private Holder<Enchantment> enchantment;
+
     @WrapOperation(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/core/Holder;Lnet/minecraft/world/entity/LivingEntity;)I"))
-    private int test(Holder<Enchantment> holder, LivingEntity livingEntity, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
-        if (holder.is(Enchantments.LOOTING)) {
+    private int test(Holder<Enchantment> enchantment, LivingEntity entity, Operation<Integer> original, @Local(argsOnly = true) LootContext context) {
+        if (enchantment.is(Enchantments.LOOTING)) {
             Entity attacker = context.getParamOrNull(LootContextParams.ATTACKING_ENTITY);
             if (attacker instanceof LivingEntity living) {
-                return Util.toInt(living.getAttributeValue(ModAttributes.MOB_LOOTING), living.getRandom());
+                return original.call(enchantment,entity) + Util.toInt(living.getAttributeValue(ModAttributes.MOB_LOOTING), living.getRandom());
             }
         }
-        return original.call(holder, livingEntity);
+        return original.call(enchantment,entity);
     }
 }
