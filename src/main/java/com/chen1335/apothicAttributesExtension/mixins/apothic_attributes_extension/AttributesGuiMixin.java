@@ -1,16 +1,12 @@
 package com.chen1335.apothicAttributesExtension.mixins.apothic_attributes_extension;
 
-import com.chen1335.apothicAttributesExtension.API.AttributeTags;
+import com.chen1335.apothicAttributesExtension.config.ClientConfig;
 import com.chen1335.apothicAttributesExtension.mixinHooks.AttributesGuiHooks;
 import dev.shadowsoffire.apothic_attributes.client.AttributesGui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.neoforged.neoforge.common.CommonHooks;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 @Mixin(AttributesGui.class)
 public abstract class AttributesGuiMixin {
@@ -57,18 +52,17 @@ public abstract class AttributesGuiMixin {
 
     @Inject(method = "compareAttrs", at = @At("RETURN"), cancellable = true)
     private void compareAttrs(AttributeInstance a1, AttributeInstance a2, CallbackInfoReturnable<Integer> cir) {
-        Objects.requireNonNull(CommonHooks.resolveLookup(Registries.ATTRIBUTE)).get(AttributeTags.ATTRIBUTE_SORT).ifPresent(holders -> {
-            List<Holder<Attribute>> list = holders.stream().toList();
-            for (Holder<Attribute> attributeHolder : list) {
-                if (attributeHolder.value() == a1.getAttribute().value()) {
-                    cir.setReturnValue(-1);
-                    break;
-                } else if (attributeHolder.value() == a2.getAttribute().value()) {
-                    cir.setReturnValue(1);
-                    break;
-                }
+        int i1 = ClientConfig.getAttributeSortIndex(a1.getAttribute().value());
+        int i2 = ClientConfig.getAttributeSortIndex(a2.getAttribute().value());
+        if (i1 < 0) {
+            if (i2 >= 0) {
+                cir.setReturnValue(1);
             }
-        });
+        } else if (i2 < 0) {
+            cir.setReturnValue(-1);
+        } else {
+            cir.setReturnValue(Integer.compare(i1, i2));
+        }
     }
 
     @Inject(method = "toggleVisibility", at = @At("RETURN"))

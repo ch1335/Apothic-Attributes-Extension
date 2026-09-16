@@ -9,5 +9,8 @@
   "apothic_attributes_extension.attribute.name.generic.fishing_luck.desc": "增加你钓到宝藏的概率",
   "apothic_attributes_extension.config": "神化属性拓展配置",
   "apothic_attributes_extension.config.server": "服务端配置",
-  "apothic_attributes_extension.fishing_speed_per_lure": "每级饵钓提供的钓鱼速度"
+  "apothic_attributes_extension.config.client": "客户端配置",
+  "apothic_attributes_extension.fishing_speed_per_lure": "每级饵钓提供的钓鱼速度",
+  "apothic_attributes_extension.attribute_sort": "属性排序顺序",
+  "apothic_attributes_extension.attribute_sort.tooltip": "在此列出的属性会按此顺序优先显示，未列出的属性按名称排序并排在最后。每一项为一个属性 ID，例如 minecraft:generic.attack_damage"
 }

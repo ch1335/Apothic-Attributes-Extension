@@ -1,6 +1,7 @@
 package com.chen1335.apothicAttributesExtension;
 
 import com.chen1335.apothicAttributesExtension.API.objects.ModAttributes;
+import com.chen1335.apothicAttributesExtension.config.ClientConfig;
 import com.chen1335.apothicAttributesExtension.config.ClothConfig;
 import com.chen1335.apothicAttributesExtension.config.ServerConfig;
 import com.chen1335.apothicAttributesExtension.network.ServerConfigPack;
@@ -11,6 +12,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -23,7 +26,10 @@ public class ApothicAttributesExtension {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ApothicAttributesExtension(IEventBus modEventBus, ModContainer modContainer) {
-        ServerConfig.load();
+        modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC,"apothic_attributes_extension/server.toml");
+        if (FMLEnvironment.dist.isClient()) {
+            modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC,"apothic_attributes_extension/client.toml");
+        }
         ModAttributes.ATTRIBUTE_DEFERRED_REGISTER.register(modEventBus);
         modEventBus.addListener(EventPriority.LOWEST, ApothicAttributesExtension::EntityAttributeModificationEvent);
         modEventBus.addListener(EventPriority.LOWEST, ApothicAttributesExtension::RegisterPayloadHandlersEvent);
